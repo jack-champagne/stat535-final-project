@@ -89,6 +89,11 @@ def test_loop(dataloader, model, loss_fn, cur_epoch):
 if __name__ == '__main__':
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     writer = SummaryWriter('runs/model-relu-128-64-64')
+<<<<<<< HEAD
     dataset = playlist_dataset.TopSongsTrain('data.csv', shuffle=True)
     test_dataset = playlist_dataset.TopSongsTrain('data.csv')
+=======
+    dataset = playlist_dataset.TopSongsTrain('data.csv')
+    test_dataset = dataset
+>>>>>>> 20115f65cff2d021fc33347bffcab68d5800596b
     main()
