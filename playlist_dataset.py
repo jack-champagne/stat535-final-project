@@ -17,7 +17,7 @@ class TopSongsTrain(Dataset):
         y=train[['followers']].values
 
         self.x_train=torch.tensor(x, dtype=torch.float32)
-        self.y_train=torch.log(torch.tensor(y, dtype=torch.float32))
+        self.y_train=torch.tensor(y, dtype=torch.float32)
 
     def __len__(self):
         return len(self.y_train)

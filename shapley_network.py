@@ -16,26 +16,28 @@ class VNet(nn.Module):
     def __init__(self):
         super(VNet, self).__init__()
 
-        self.input_layer = nn.Linear(top_song_count, 256)
-        self.fc1 = nn.Linear(256, 64)
-        self.fc2 = nn.Linear(64, 1)
+        self.input_layer = nn.Linear(top_song_count, 128)
+        self.fc1 = nn.Linear(128, 64)
+        self.fc2 = nn.Linear(64, 64)
+        self.fc3 = nn.Linear(64, 1)
 
     def forward(self, x):
         # take in 2000 song input to input layer
         x = F.relu(self.input_layer(x))
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
+        x = F.relu(self.fc3(x))
         return x
 
-model_desc = "relu-256-64-relu"
+model_desc = "relu-128-64-64-relu-nologdata"
 
 def main():
     net = VNet()
     net.to(device)
 
     # Hyper-parameters
-    learning_rate = 0.05
-    batch_size = 32
+    learning_rate = 0.003
+    batch_size = 64
     epochs = 1024
 
     loss_fn = nn.MSELoss()
